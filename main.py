@@ -4,19 +4,16 @@ from typing import List, Optional
 
 app = FastAPI()
 
-# Модель данных для задачи
 class Task(BaseModel):
     title: str = Field(..., example="Название задачи")
     description: Optional[str] = Field(None, example="Описание задачи")
     completed: bool = Field(False, example=False)
 
-# Модель данных для обновления задачи
 class TaskUpdate(BaseModel):
     title: Optional[str] = Field(None, example="Название задачи")
     description: Optional[str] = Field(None, example="Описание задачи")
     completed: Optional[bool] = Field(None, example=False)
 
-# Временное хранилище для задач
 tasks = []
 task_id_counter = 1
 
